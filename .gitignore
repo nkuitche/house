@@ -4,3 +4,31 @@
 *.jar
 *.war
 *.ear
+
+
+package com.HouseSdk.Topology;
+import org.apache.log4j.Logger;
+
+import house.core.config.PoolingAttributes;
+import house.core.config.WorkRepositoryDbInfo;
+
+/**
+ * This class is for Work Repostiroy operations
+ * 
+ * 
+ * ConnectToWorkRepository return WorkRepositoryDbInfo 
+ */
+public class WorkRepository{
+
+  private String WorkRepositoryName;
+	static Logger logger = Logger.getLogger("com.HouseSdk.Topology.WorkRepository.class");
+	
+	public WorkRepository (String WorkRepositoryName) {
+		this.WorkRepositoryName = WorkRepositoryName;
+	}
+	
+	public WorkRepositoryDbInfo ConnectToWorkRepository () {
+		WorkRepositoryDbInfo workRepConnection = new WorkRepositoryDbInfo(this.WorkRepositoryName, new PoolingAttributes());
+		return workRepConnection;
+	}
+}
